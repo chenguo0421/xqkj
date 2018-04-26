@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" extends="json-default,struts-default">
+	    <action name="userinfo" method="aa" class="cn.com.cg.core.action.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	     <action name="json" class="cn.com.cg.core.action.LoginAction" method="json">  
+            <result type="json" name="success">  
+                <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法   -->
+                <param name="root">dataMap</param>  
+            </result>  
+        </action> 
+                <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法  提交问题 -->
+        <action name="qaquery" class="com.cg.wx.brush.qa.QAQueryAction" method="queryQALists">
+            <result type="json" name="success">  
+                <param name="root">dataMap</param>  
+            </result>  
+        </action>
+        
+                  <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法  查询已回答问题列表 -->
+        <action name="QAQuetionList" class="com.cg.wx.brush.qa.QueryQuestion" method="queryQALists">
+            <result type="json" name="success">  
+                <param name="root">dataMap</param>  
+            </result>  
+        </action>
+        
+                    <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法  查询未回答问题列表 -->
+        <action name="waitAnswer" class="com.cg.wx.brush.qa.WaitQuestion" method="queryQALists">
+            <result type="json" name="success">  
+                <param name="root">dataMap</param>  
+            </result>  
+        </action>
+	</package>
+</struts>
